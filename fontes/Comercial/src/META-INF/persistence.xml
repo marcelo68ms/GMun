@@ -3,6 +3,8 @@
   <persistence-unit name="ComercialPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>br.com.sw2.comercial.bean.Fornecedor</class>
+    <class>br.com.sw2.comercial.bean.TipoProduto</class>
+    <class>br.com.sw2.comercial.bean.Produto</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:file:~/Comercial"/>
       <property name="javax.persistence.jdbc.user" value="sa"/>
