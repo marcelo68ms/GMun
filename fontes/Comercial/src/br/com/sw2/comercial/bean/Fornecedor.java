@@ -7,6 +7,7 @@
 package br.com.sw2.comercial.bean;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -21,16 +22,25 @@ public class Fornecedor implements Serializable {
     private static final long serialVersionUID = 1L;
     
     @Id
+    @Column(name="NrCNPJ")
     private String cnpj;
-
+    @Column(name="DsRazaoSocial")
     private String razaoSocial;
+    @Column(name="DsEndereco")
     private String endereco;
+    @Column(name="DsBairro")
     private String bairro;
+    @Column(name="DsCidade")
     private String cidade;
+    @Column(name="DsEstado")
     private String estado;
+    @Column(name="NrCep")
     private String cep;
+    @Column(name="DsEmail")
     private String email;
+    @Column(name="NrFone1")
     private String fone1;
+    @Column(name="NrFone2")
     private String fone2;
     
     @Override
