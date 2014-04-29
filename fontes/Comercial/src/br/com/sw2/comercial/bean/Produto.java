@@ -7,34 +7,84 @@
 package br.com.sw2.comercial.bean;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  *
  * @author marcelo
  */
 @Entity
+@Table(name="TblProduto")
 public class Produto implements Serializable {
     private static final long serialVersionUID = 1L;
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @Column(name="CodProduto")
+    private String codProduto;
+    
+    @Column(name="DsNomeProduto")
+    private String nomeProduto;
+    
+    @Column(name="NrQtdMinima")
+    private Long qtdMinima;
+    
+    @Column(name="NrQtdMaxima")
+    private Long qtdMaxima;
+    
+    @ManyToOne
+    @JoinColumn(name="CodTipoProduto")
+    private TipoProduto tipoProduto;
 
-    public Long getId() {
-        return id;
+    public String getCodProduto() {
+        return codProduto;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setCodProduto(String codProduto) {
+        this.codProduto = codProduto;
     }
 
+    public String getNomeProduto() {
+        return nomeProduto;
+    }
+
+    public void setNomeProduto(String nomeProduto) {
+        this.nomeProduto = nomeProduto;
+    }
+
+    public Long getQtdMinima() {
+        return qtdMinima;
+    }
+
+    public void setQtdMinima(Long qtdMinima) {
+        this.qtdMinima = qtdMinima;
+    }
+
+    public Long getQtdMaxima() {
+        return qtdMaxima;
+    }
+
+    public void setQtdMaxima(Long qtdMaxima) {
+        this.qtdMaxima = qtdMaxima;
+    }
+
+    public TipoProduto getTipoProduto() {
+        return tipoProduto;
+    }
+
+    public void setTipoProduto(TipoProduto tipoProduto) {
+        this.tipoProduto = tipoProduto;
+    }
+    
+    
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (codProduto != null ? codProduto.hashCode() : 0);
         return hash;
     }
 
@@ -45,7 +95,8 @@ public class Produto implements Serializable {
             return false;
         }
         Produto other = (Produto) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.codProduto == null && other.codProduto != null) || 
+                (this.codProduto != null && !this.codProduto.equals(other.codProduto))) {
             return false;
         }
         return true;
@@ -53,7 +104,7 @@ public class Produto implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.sw2.comercial.bean.Produto[ id=" + id + " ]";
+        return "br.com.sw2.comercial.bean.Produto[ codProduto=" + codProduto + " ]";
     }
     
 }

@@ -30,6 +30,22 @@ public class TipoProduto implements Serializable {
     @Column(name="DsNomeTipo")
     private String nomeTipo;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNomeTipo() {
+        return nomeTipo;
+    }
+
+    public void setNomeTipo(String nomeTipo) {
+        this.nomeTipo = nomeTipo;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;

@@ -42,6 +42,86 @@ public class Fornecedor implements Serializable {
     private String fone1;
     @Column(name="NrFone2")
     private String fone2;
+
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
+
+    public String getRazaoSocial() {
+        return razaoSocial;
+    }
+
+    public void setRazaoSocial(String razaoSocial) {
+        this.razaoSocial = razaoSocial;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getFone1() {
+        return fone1;
+    }
+
+    public void setFone1(String fone1) {
+        this.fone1 = fone1;
+    }
+
+    public String getFone2() {
+        return fone2;
+    }
+
+    public void setFone2(String fone2) {
+        this.fone2 = fone2;
+    }
     
     @Override
     public int hashCode() {
