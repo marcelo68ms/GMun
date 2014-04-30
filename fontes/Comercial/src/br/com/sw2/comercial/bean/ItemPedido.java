@@ -7,38 +7,22 @@
 package br.com.sw2.comercial.bean;
 
 import java.io.Serializable;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import org.eclipse.persistence.jpa.jpql.parser.DateTime;
 
 /**
  *
  * @author marcelo.santos
  */
 @Entity
-@Table(name="TblPedido")
-public class Pedido implements Serializable {
+public class ItemPedido implements Serializable {
     private static final long serialVersionUID = 1L;
-    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="numPedido")
     private Long id;
 
-    @Column(name="DtPedido")
-    private DateTime dataPedido;
-    
-    @ManyToOne
-    @JoinColumn(name="NrCNPJ")
-    private Fornecedor fornecedor;
-  
-    
     public Long getId() {
         return id;
     }
@@ -47,22 +31,6 @@ public class Pedido implements Serializable {
         this.id = id;
     }
 
-    public DateTime getDataPedido() {
-        return dataPedido;
-    }
-
-    public void setDataPedido(DateTime dataPedido) {
-        this.dataPedido = dataPedido;
-    }
-
-    public Fornecedor getFornecedor() {
-        return fornecedor;
-    }
-
-    public void setFornecedor(Fornecedor fornecedor) {
-        this.fornecedor = fornecedor;
-    }
-    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -73,10 +41,10 @@ public class Pedido implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Pedido)) {
+        if (!(object instanceof ItemPedido)) {
             return false;
         }
-        Pedido other = (Pedido) object;
+        ItemPedido other = (ItemPedido) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -85,7 +53,7 @@ public class Pedido implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.sw2.comercial.bean.Pedido[ id=" + id + " ]";
+        return "br.com.sw2.comercial.bean.ItemPedido[ id=" + id + " ]";
     }
     
 }
