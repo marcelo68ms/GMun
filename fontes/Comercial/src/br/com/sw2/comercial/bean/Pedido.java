@@ -7,66 +7,95 @@
 package br.com.sw2.comercial.bean;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import org.eclipse.persistence.jpa.jpql.parser.DateTime;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author marcelo.santos
  */
 @Entity
-@Table(name="TblPedido")
+@Table(name = "TBLPEDIDO")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Pedido.findAll", query = "SELECT p FROM Pedido p"),
+    @NamedQuery(name = "Pedido.findByNrpedido", query = "SELECT p FROM Pedido p WHERE p.nrpedido = :nrpedido"),
+    @NamedQuery(name = "Pedido.findByDspedido", query = "SELECT p FROM Pedido p WHERE p.dspedido = :dspedido")})
 public class Pedido implements Serializable {
     private static final long serialVersionUID = 1L;
-    
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="numPedido")
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "NRPEDIDO", nullable = false)
+    private Integer nrpedido;
+    @Column(name = "DSPEDIDO")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dspedido;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pedido")
+    private List<Orcamento> orcamentoList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pedido")
+    private List<ItemPedido> itemPedidoList;
 
-    @Column(name="DtPedido")
-    private DateTime dataPedido;
-    
-    @ManyToOne
-    @JoinColumn(name="NrCNPJ")
-    private Fornecedor fornecedor;
-  
-    
-    public Long getId() {
-        return id;
+    public Pedido() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Pedido(Integer nrpedido) {
+        this.nrpedido = nrpedido;
     }
 
-    public DateTime getDataPedido() {
-        return dataPedido;
+    public Integer getNrpedido() {
+        return nrpedido;
     }
 
-    public void setDataPedido(DateTime dataPedido) {
-        this.dataPedido = dataPedido;
+    public void setNrpedido(Integer nrpedido) {
+        this.nrpedido = nrpedido;
     }
 
-    public Fornecedor getFornecedor() {
-        return fornecedor;
+    public Date getDspedido() {
+        return dspedido;
     }
 
-    public void setFornecedor(Fornecedor fornecedor) {
-        this.fornecedor = fornecedor;
+    public void setDspedido(Date dspedido) {
+        this.dspedido = dspedido;
     }
-    
+
+    @XmlTransient
+    public List<Orcamento> getOrcamentoList() {
+        return orcamentoList;
+    }
+
+    public void setOrcamentoList(List<Orcamento> orcamentoList) {
+        this.orcamentoList = orcamentoList;
+    }
+
+    @XmlTransient
+    public List<ItemPedido> getItemPedidoList() {
+        return itemPedidoList;
+    }
+
+    public void setItemPedidoList(List<ItemPedido> itemPedidoList) {
+        this.itemPedidoList = itemPedidoList;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (nrpedido != null ? nrpedido.hashCode() : 0);
         return hash;
     }
 
@@ -77,7 +106,7 @@ public class Pedido implements Serializable {
             return false;
         }
         Pedido other = (Pedido) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.nrpedido == null && other.nrpedido != null) || (this.nrpedido != null && !this.nrpedido.equals(other.nrpedido))) {
             return false;
         }
         return true;
@@ -85,7 +114,7 @@ public class Pedido implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.sw2.comercial.bean.Pedido[ id=" + id + " ]";
+        return "br.com.sw2.comercial.bean.Pedido[ nrpedido=" + nrpedido + " ]";
     }
     
 }

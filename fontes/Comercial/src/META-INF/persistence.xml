@@ -7,6 +7,10 @@
     <class>br.com.sw2.comercial.bean.Produto</class>
     <class>br.com.sw2.comercial.bean.Pedido</class>
     <class>br.com.sw2.comercial.bean.ItemPedido</class>
+    <class>br.com.sw2.comercial.bean.Orcamento</class>
+    <class>br.com.sw2.comercial.bean.Material</class>
+    <class>br.com.sw2.comercial.bean.ItemOrcamento</class>
+    <class>br.com.sw2.comercial.bean.TipoMaterial</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:file:~/Comercial"/>
       <property name="javax.persistence.jdbc.user" value="sa"/>
