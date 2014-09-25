@@ -17,7 +17,10 @@ import javax.persistence.Embeddable;
  */
 @Embeddable
 public class OrcamentoPK implements Serializable {
-    @Basic(optional = false)
+
+	private static final long serialVersionUID = 457116736282425626L;
+	
+	@Basic(optional = false)
     @Column(name = "NRPEDIDO", nullable = false)
     private int nrpedido;
     @Basic(optional = false)

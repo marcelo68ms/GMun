@@ -8,6 +8,7 @@ package br.com.sw2.comercial.dao;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
@@ -36,7 +37,8 @@ public class BaseDAO<T extends Serializable> {
      * @return list
      * @see
      */
-    public List<T> filterByField(String field, String value) {
+    @SuppressWarnings("unchecked")
+	public List<T> filterByField(String field, String value) {
         StringBuffer jpql = new StringBuffer("SELECT entity FROM ");
         jpql.append(this.entity.getSimpleName());
         jpql.append(" entity");
@@ -62,7 +64,8 @@ public class BaseDAO<T extends Serializable> {
      * @return list
      * @see
      */
-    public List<T> filterByField(String field, Date value) {
+    @SuppressWarnings("unchecked")
+	public List<T> filterByField(String field, Date value) {
         StringBuffer jpql = new StringBuffer("SELECT entity FROM ");
         jpql.append(this.entity.getSimpleName());
         jpql.append(" entity");
@@ -137,7 +140,8 @@ public class BaseDAO<T extends Serializable> {
      * @return valor do atributo 'enityById'
      * @see
      */
-    public <T> T getEntityById(Object id) {
+    @SuppressWarnings({ "unchecked", "hiding" })
+	public <T> T getEntityById(Object id) {
         this.entityManager.getEntityManagerFactory().getCache().evictAll();
         return (T) this.entityManager.find(this.entity, id);
     }
