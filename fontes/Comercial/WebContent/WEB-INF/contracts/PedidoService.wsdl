@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://www.sw2.com.br/comercial/service/PedidoService"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	name="PedidoService" targetNamespace="http://www.sw2.com.br/comercial/service/PedidoService">
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://www.sw2.com.br/comercial/service/PedidoService"
+			xmlns:beans="http://www.sw2.com.br/comercial/bean">
+
+			<xsd:import namespace="http://www.sw2.com.br/comercial/bean"
+				schemaLocation="../schemas/Entidades.xsd" />
+
+			<xsd:element name="fazerPedido">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="pedido" type="beans:pedido" />
+						<xsd:element name="fornecedor" type="beans:fornecedor" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="fazerPedidoResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="orcamento" type="beans:orcamento" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="fazerPedidoRequest">
+		<wsdl:part element="tns:fazerPedido" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="fazerPedidoResponse">
+		<wsdl:part element="tns:fazerPedidoResponse" name="parameters" />
+	</wsdl:message>
+	<wsdl:portType name="PedidoService">
+		<wsdl:operation name="fazerPedido">
+			<wsdl:input message="tns:fazerPedidoRequest" />
+			<wsdl:output message="tns:fazerPedidoResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="PedidoServiceSOAP" type="tns:PedidoService">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="fazerPedido">
+			<soap:operation soapAction="PedidoService/fazerPedido" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="PedidoService">
+		<wsdl:port binding="tns:PedidoServiceSOAP" name="PedidoServiceSOAP">
+			<soap:address location="http://localhost:8080/pedidos" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

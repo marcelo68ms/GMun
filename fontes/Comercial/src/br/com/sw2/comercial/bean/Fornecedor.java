@@ -21,6 +21,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -31,6 +33,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "TBLFORNECEDOR")
 @XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 @NamedQueries({
     @NamedQuery(name = "Fornecedor.findAll", query = "SELECT f FROM Fornecedor f"),
     @NamedQuery(name = "Fornecedor.findByNrcnpj", query = "SELECT f FROM Fornecedor f WHERE f.nrcnpj = :nrcnpj"),
