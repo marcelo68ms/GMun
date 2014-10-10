@@ -13,8 +13,8 @@
 			<xsd:element name="fazerPedido">
 				<xsd:complexType>
 					<xsd:sequence>
-						<xsd:element name="pedido" type="beans:pedido" />
-						<xsd:element name="fornecedor" type="beans:fornecedor" />
+						<xsd:element name="pedido" type="beans:pedido" minOccurs="1"/>
+						<xsd:element name="nrcnpj" type="xsd:string" minOccurs="1"/>
 					</xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>

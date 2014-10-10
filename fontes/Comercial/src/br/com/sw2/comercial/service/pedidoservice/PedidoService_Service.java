@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "PedidoService", targetNamespace = "http://www.sw2.com.br/comercial/service/PedidoService", wsdlLocation = "file:/D:/SW2/OdonTO-DO/fontes/Comercial/src/WEB-INF/contracts/PedidoService.wsdl")
+@WebServiceClient(name = "PedidoService", targetNamespace = "http://www.sw2.com.br/comercial/service/PedidoService", wsdlLocation = "file:/D:/SW2/OdonTO-DO/fontes/Comercial/WebContent/WEB-INF/contracts/PedidoService.wsdl")
 public class PedidoService_Service
     extends Service
 {
@@ -30,7 +30,7 @@ public class PedidoService_Service
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("file:/D:/SW2/OdonTO-DO/fontes/Comercial/src/WEB-INF/contracts/PedidoService.wsdl");
+            url = new URL("file:/D:/SW2/OdonTO-DO/fontes/Comercial/WebContent/WEB-INF/contracts/PedidoService.wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

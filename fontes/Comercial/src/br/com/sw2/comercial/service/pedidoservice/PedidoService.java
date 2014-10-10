@@ -8,7 +8,6 @@ import javax.jws.WebService;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.ws.RequestWrapper;
 import javax.xml.ws.ResponseWrapper;
-import br.com.sw2.comercial.bean.Fornecedor;
 import br.com.sw2.comercial.bean.Orcamento;
 import br.com.sw2.comercial.bean.Pedido;
 
@@ -29,8 +28,8 @@ public interface PedidoService {
 
     /**
      * 
+     * @param nrcnpj
      * @param pedido
-     * @param fornecedor
      * @return
      *     returns br.com.sw2.comercial.bean.Orcamento
      */
@@ -41,7 +40,7 @@ public interface PedidoService {
     public Orcamento fazerPedido(
         @WebParam(name = "pedido", targetNamespace = "")
         Pedido pedido,
-        @WebParam(name = "fornecedor", targetNamespace = "")
-        Fornecedor fornecedor);
+        @WebParam(name = "nrcnpj", targetNamespace = "")
+        String nrcnpj);
 
 }

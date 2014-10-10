@@ -3,37 +3,36 @@
 	xmlns:tns="http://www.sw2.com.br/comercial/bean">
    <xsd:complexType name="itemOrcamentoPK">
       <xsd:sequence>
-         <xsd:element name="cdmaterial" type="xsd:string" minOccurs="1"/>
-         <xsd:element name="nrcnpj" type="xsd:string" minOccurs="1"/>
-         <xsd:element name="nrpedido" type="xsd:int" minOccurs="1"/>
+         <xsd:element name="cdmaterial" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="nrcnpj" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="nrpedido" type="xsd:int" minOccurs="0"/>
       </xsd:sequence>
    </xsd:complexType>
    <xsd:complexType name="orcamento">
       <xsd:sequence>
          <xsd:element name="dtenvio" type="xsd:dateTime" minOccurs="0"/>
          <xsd:element name="dtretorno" type="xsd:dateTime" minOccurs="0"/>
-         <xsd:element name="fornecedor" type="tns:fornecedor" minOccurs="1"/>
          <xsd:element name="orcamentoPK" type="tns:orcamentoPK" minOccurs="0"/>
-         <xsd:element name="pedido" type="tns:pedido" minOccurs="1"/>
+         <xsd:element name="itemOrcamentoList" type="tns:itemOrcamento" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
       </xsd:sequence>
    </xsd:complexType>
    <xsd:complexType name="orcamentoPK">
       <xsd:sequence>
-         <xsd:element name="nrcnpj" type="xsd:string" minOccurs="1"/>
-         <xsd:element name="nrpedido" type="xsd:int" minOccurs="1"/>
+         <xsd:element name="nrcnpj" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="nrpedido" type="xsd:int" minOccurs="0"/>
       </xsd:sequence>
    </xsd:complexType>
    <xsd:complexType name="itemOrcamento">
       <xsd:sequence>
          <xsd:element name="itemOrcamentoPK" type="tns:itemOrcamentoPK" minOccurs="0"/>
-         <xsd:element name="material" type="tns:material" minOccurs="1"/>
-         <xsd:element name="orcamento" type="tns:orcamento" minOccurs="1"/>
+         <xsd:element name="material" type="tns:material" minOccurs="0"/>
+         <xsd:element name="orcamento" type="tns:orcamento" minOccurs="0"/>
          <xsd:element name="vlmaterial" type="xsd:decimal" minOccurs="0"/>
       </xsd:sequence>
    </xsd:complexType>
    <xsd:complexType name="material">
       <xsd:sequence>
-         <xsd:element name="cdmaterial" type="xsd:string" minOccurs="1"/>
+         <xsd:element name="cdmaterial" type="xsd:string" minOccurs="0"/>
          <xsd:element name="cdtipomaterial" type="tns:tipoMaterial" minOccurs="0"/>
          <xsd:element name="dslocal" type="xsd:string" minOccurs="0"/>
          <xsd:element name="dsmaterial" type="xsd:string" minOccurs="0"/>
@@ -44,27 +43,29 @@
    <xsd:complexType name="pedido">
       <xsd:sequence>
          <xsd:element name="dspedido" type="xsd:dateTime" minOccurs="0"/>
-         <xsd:element name="nrpedido" type="xsd:int" minOccurs="1"/>
+         <xsd:element name="nrpedido" type="xsd:int" minOccurs="0"/>
+         <xsd:element name="orcamentoList" type="tns:orcamento" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+         <xsd:element name="itemPedidoList" type="tns:itemPedido" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
       </xsd:sequence>
    </xsd:complexType>
    <xsd:complexType name="itemPedido">
       <xsd:sequence>
          <xsd:element name="itemPedidoPK" type="tns:itemPedidoPK" minOccurs="0"/>
-         <xsd:element name="material" type="tns:material" minOccurs="1"/>
+         <xsd:element name="material" type="tns:material" minOccurs="0"/>
          <xsd:element name="nrquant" type="xsd:decimal" minOccurs="0"/>
-         <xsd:element name="pedido" type="tns:pedido" minOccurs="1"/>
+         <xsd:element name="pedido" type="tns:pedido" minOccurs="0"/>
       </xsd:sequence>
    </xsd:complexType>
    <xsd:complexType name="itemPedidoPK">
       <xsd:sequence>
-         <xsd:element name="cdmaterial" type="xsd:string" minOccurs="1"/>
-         <xsd:element name="nrpedido" type="xsd:int" minOccurs="1"/>
+         <xsd:element name="cdmaterial" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="nrpedido" type="xsd:int" minOccurs="0"/>
       </xsd:sequence>
    </xsd:complexType>
    <xsd:complexType name="fornecedor">
       <xsd:sequence>
-         <xsd:element name="nrcnpj" type="xsd:string" minOccurs="1"/>
-         <xsd:element name="nmrazaosocial" type="xsd:string" minOccurs="1"/>
+         <xsd:element name="nrcnpj" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="nmrazaosocial" type="xsd:string" minOccurs="0"/>
          <xsd:element name="dsendereco" type="xsd:string" minOccurs="0"/>
          <xsd:element name="dscidade" type="xsd:string" minOccurs="0"/>
          <xsd:element name="dsestado" type="xsd:string" minOccurs="0"/>
@@ -77,8 +78,8 @@
    </xsd:complexType>
    <xsd:complexType name="tipoMaterial">
       <xsd:sequence>
-         <xsd:element name="cdtipomaterial" type="xsd:int" minOccurs="1"/>
-         <xsd:element name="dstipomaterial" type="xsd:string" minOccurs="1"/>
+         <xsd:element name="cdtipomaterial" type="xsd:int" minOccurs="0"/>
+         <xsd:element name="dstipomaterial" type="xsd:string" minOccurs="0"/>
       </xsd:sequence>
    </xsd:complexType>
 </xsd:schema>

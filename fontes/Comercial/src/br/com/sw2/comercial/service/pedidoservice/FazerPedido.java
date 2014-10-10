@@ -6,7 +6,6 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-import br.com.sw2.comercial.bean.Fornecedor;
 import br.com.sw2.comercial.bean.Pedido;
 
 
@@ -21,7 +20,7 @@ import br.com.sw2.comercial.bean.Pedido;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="pedido" type="{http://www.sw2.com.br/comercial/bean}pedido"/>
- *         &lt;element name="fornecedor" type="{http://www.sw2.com.br/comercial/bean}fornecedor"/>
+ *         &lt;element name="nrcnpj" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -33,7 +32,7 @@ import br.com.sw2.comercial.bean.Pedido;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "pedido",
-    "fornecedor"
+    "nrcnpj"
 })
 @XmlRootElement(name = "fazerPedido")
 public class FazerPedido {
@@ -41,7 +40,7 @@ public class FazerPedido {
     @XmlElement(required = true)
     protected Pedido pedido;
     @XmlElement(required = true)
-    protected Fornecedor fornecedor;
+    protected String nrcnpj;
 
     /**
      * Obtem o valor da propriedade pedido.
@@ -72,23 +71,23 @@ public class FazerPedido {
      * 
      * @return
      *     possible object is
-     *     {@link Fornecedor }
+     *     {@link String }
      *     
      */
-    public Fornecedor getFornecedor() {
-        return fornecedor;
+    public String getNrcnpj() {
+        return nrcnpj;
     }
 
     /**
-     * Define o valor da propriedade fornecedor.
+     * Define o valor da propriedade nrcnpj.
      * 
      * @param value
      *     allowed object is
-     *     {@link Fornecedor }
+     *     {@link String }
      *     
      */
-    public void setFornecedor(Fornecedor value) {
-        this.fornecedor = value;
+    public void setNrcnpj(String value) {
+        this.nrcnpj = value;
     }
 
 }

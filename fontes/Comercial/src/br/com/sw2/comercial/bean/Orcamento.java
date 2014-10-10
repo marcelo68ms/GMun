@@ -22,6 +22,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -32,6 +34,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "TBLORCAMENTO")
 @XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 @NamedQueries({
     @NamedQuery(name = "Orcamento.findAll", query = "SELECT o FROM Orcamento o"),
     @NamedQuery(name = "Orcamento.findByNrpedido", query = "SELECT o FROM Orcamento o WHERE o.orcamentoPK.nrpedido = :nrpedido"),
@@ -50,9 +53,11 @@ public class Orcamento implements Serializable {
     private Date dtretorno;
     @JoinColumn(name = "NRPEDIDO", referencedColumnName = "NRPEDIDO", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
+    @XmlTransient
     private Pedido pedido;
     @JoinColumn(name = "NRCNPJ", referencedColumnName = "NRCNPJ", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
+    @XmlTransient
     private Fornecedor fornecedor;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "orcamento")
     private List<ItemOrcamento> itemOrcamentoList;
