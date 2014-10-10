@@ -28,7 +28,9 @@ public class PedidoServiceTest {
 
 	@Before
 	public void setUp() {
-		
+		// Criar Fornecedor
+		Fornecedor fornecedor = new Fornecedor(CNPJ,"FornecedorTestJUnit");
+		fornecedorDAO.inserir(fornecedor);
 	}
 	
 	@After
@@ -52,13 +54,9 @@ public class PedidoServiceTest {
 		Pedido pedido = new Pedido();
 		pedido.setDspedido(new Date());
 		
-		// Criar Fornecedor
-		Fornecedor fornecedor = new Fornecedor(CNPJ,"FornecedorTestJUnit");
-		fornecedorDAO.inserir(fornecedor);
-		
 		PedidoServiceImpl service = new PedidoServiceImpl();
 		try {
-			Orcamento orcamento = service.fazerPedido(pedido, fornecedor);
+			Orcamento orcamento = service.fazerPedido(pedido, CNPJ);
 			assertNotNull(orcamento);
 			assertEquals(pedido.getNrpedido(), orcamento.getPedido().getNrpedido());
 			assertEquals(CNPJ, orcamento.getFornecedor().getNrcnpj());
