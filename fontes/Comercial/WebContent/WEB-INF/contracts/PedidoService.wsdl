@@ -54,7 +54,7 @@
 	</wsdl:binding>
 	<wsdl:service name="PedidoService">
 		<wsdl:port binding="tns:PedidoServiceSOAP" name="PedidoServiceSOAP">
-			<soap:address location="http://localhost:8080/pedidos" />
+			<soap:address location="http://localhost:8080/Comercial/PedidoService" />
 		</wsdl:port>
 	</wsdl:service>
 </wsdl:definitions>
