@@ -1,6 +1,9 @@
 package br.com.sw2.comercial.service.pedidoservice;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import javax.jws.WebMethod;
 import javax.jws.WebResult;
@@ -9,6 +12,8 @@ import javax.xml.ws.RequestWrapper;
 import javax.xml.ws.ResponseWrapper;
 
 import br.com.sw2.comercial.bean.Fornecedor;
+import br.com.sw2.comercial.bean.ItemOrcamento;
+import br.com.sw2.comercial.bean.ItemPedido;
 import br.com.sw2.comercial.bean.Orcamento;
 import br.com.sw2.comercial.bean.Pedido;
 import br.com.sw2.comercial.dao.BaseDAO;
@@ -35,13 +40,27 @@ public class PedidoServiceImpl implements PedidoService {
 		BaseDAO<Pedido> pedidoDAO = new BaseDAO<Pedido>(Pedido.class);
 		pedidoDAO.inserir(pedido);
 		
+		return gerarOrcamento(pedido, nrcnpj);
+	}
+
+	private Orcamento gerarOrcamento(Pedido pedido, String nrcnpj) {
 		// TODO - Codigo somente para testar a comunicacao, posteriomente precisa alterar para 
-		// a logica correta de caculo de orcamento e fornecedor
+		// a logica correta de caculo de orcamento 
 		Orcamento orcamento = new Orcamento(pedido.getNrpedido(), nrcnpj);
 		
+		orcamento.setDtenvio(new Date());
 		orcamento.setPedido(pedido);
-		pedido.setOrcamentoList(new ArrayList<Orcamento>());
-		pedido.getOrcamentoList().add(orcamento);
+		
+		List<ItemOrcamento> itensOrcamento = new ArrayList<ItemOrcamento>();
+		for (ItemPedido itemPedido : pedido.getItemPedidoList()) {
+			ItemOrcamento itemOrcamento = new ItemOrcamento();
+			itemOrcamento.setMaterial(itemPedido.getMaterial());
+			itemOrcamento.setVlmaterial(new BigDecimal(100));
+			itemOrcamento.setOrcamento(orcamento);
+			itensOrcamento.add(itemOrcamento);
+		}
+		
+		orcamento.setItemOrcamentoList(itensOrcamento);
 		
 		FornecedorService fornecedorService = new FornecedorService();
 		Fornecedor fornecedor = fornecedorService.recuperaFornecedorById(nrcnpj);
@@ -54,9 +73,11 @@ public class PedidoServiceImpl implements PedidoService {
 		
 		fornecedor.getOrcamentoList().add(orcamento);
 		
+		pedido.setOrcamentoList(new ArrayList<Orcamento>());
+		pedido.getOrcamentoList().add(orcamento);
+		
 		BaseDAO<Orcamento> orcamentoDAO = new BaseDAO<Orcamento>(Orcamento.class);
 		orcamentoDAO.inserir(orcamento);
-		
 		return orcamento;
 	}
 
