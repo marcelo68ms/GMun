@@ -24,14 +24,20 @@ import com.google.api.services.calendar.model.EventDateTime;
 public class GoogleCalendarService {
 	
 	private static final String PRIMARY = "primary";
-	private static final String EMAIL_TESTE = "odontodo@gmail.com";
+	private static final String EMAIL_PROPRIO = "odontodo@gmail.com";
+	private static final String EMAIL_TERCEIRO = "paciente.odonto@gmail.com";
 	static final String EMAIL_SERVICE_ACCOUNT = "776101340018-elojl84r7lu5rvbq55bdajk7mvqfkdqb@developer.gserviceaccount.com";
 	static final String PATH = "d:\\SW2\\OdonTO-DO\\fontes\\Comercial\\src\\main\\resources\\credentials\\OdonTO-DO-6368a879e485.p12";
 	
 	public static void main(String[] args) {
 		com.google.api.services.calendar.Calendar client = setUp();
-		String eventoId = criarEvento(client);
-		System.out.println(eventoId);
+		
+		// Criar e alterar evento na propria agenda
+		String eventoId = criarEvento(client, EMAIL_PROPRIO);
+		alterarEvento(client, eventoId);
+		
+		// Criar e alterar evento na agenda de terceiro
+		eventoId = criarEvento(client, EMAIL_TERCEIRO);
 		alterarEvento(client, eventoId);
 	}
 	
@@ -86,14 +92,14 @@ public class GoogleCalendarService {
 		
 	}*/
 	
-	private static String criarEvento(Calendar client) {
+	private static String criarEvento(Calendar client, String email) {
 		
 		Event event = new Event();
 
 		event.setSummary("Canal Paciente X");
 
 		ArrayList<EventAttendee> attendees = new ArrayList<EventAttendee>();
-		attendees.add(new EventAttendee().setEmail(EMAIL_TESTE));
+		attendees.add(new EventAttendee().setEmail(email));
 		event.setAttendees(attendees);
 
 		Date startDate = new Date();
@@ -109,6 +115,8 @@ public class GoogleCalendarService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		System.out.println(createdEvent.toString());
 
 		return createdEvent.getId();
 		
