@@ -14,6 +14,7 @@ import br.com.sw2.comercial.bean.Material;
 import br.com.sw2.comercial.bean.Orcamento;
 import br.com.sw2.comercial.bean.Pedido;
 import br.com.sw2.comercial.dao.BaseDAO;
+import br.com.sw2.comercial.service.email.EmailService;
 import br.com.sw2.comercial.service.pedidoservice.PedidoServiceImpl;
 
 public class PedidoServiceFile {
@@ -69,6 +70,8 @@ public class PedidoServiceFile {
 		String nomeArquivo = "Orcamento" + nrPedido + "-";
 		fileOp.criarArquivo(nomeArquivo, linhas);
 		fileOp.inlcuirNumPedidoArquivo(arquivo, nrPedido);
+		
+		EmailService.sendSimpleMail("Arquivo de Orçamento gerado", "Foi criado o arquivo de orcamento para o pedido " + nrPedido, "odontodo@gmail.com");
 
 		System.out.println("===> Orcamento: " + linhas);
 
@@ -99,9 +102,9 @@ public class PedidoServiceFile {
 		pedido.setItemPedidoList(itens);
 	}
 
-	private Date recuperarDataPedido(String nome) {
+	public Date recuperarDataPedido(String nome) {
 		// Recuperar data do pedido, que faz parte do nome do arquivo, que
-		// deve seguir o modelo "pedidoyyyyMMddhhmmss.txt"
+		// deve seguir o modelo "PedidoyyyyMMddhhmmss"
 		SimpleDateFormat formatoData = new SimpleDateFormat(FORMAT_DATE);
 		Date dataPedido = null;
 		try {
