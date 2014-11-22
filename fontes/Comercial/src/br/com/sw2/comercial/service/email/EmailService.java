@@ -24,7 +24,7 @@ public class EmailService {
 	private static final String EMAIL = "odontodo@gmail.com";
 
 	public static void main(String[] args) {
-		//sendSimpleMail("Teste", "Isso é um teste!", EMAIL_TO);
+		//sendSimpleMail("Teste", "Isso eh um teste!", EMAIL_TO);
 		
 		sendSimpleMailJavaMail();
 	}
@@ -68,9 +68,9 @@ public class EmailService {
 	}
 
 	/**
-	 * Cria uma nova sessão com a autenticação
+	 * Cria uma nova sessao com a autenticacao
 	 * 
-	 * @return {@link Session} contendo a sessão já autenticada
+	 * @return {@link Session} contendo a sessao ja autenticada
 	 */
 	private static Session createAuthenticatorSession() {
 		Properties properties = createEmailConfigurationProperties();
@@ -87,7 +87,7 @@ public class EmailService {
 	/**
 	 * Atribui ao properties as configuracoes do {@link EmailAccountConfiguration}
 	 * 
-	 * @return {@link Properties} contendo as configurações do serviço de emails
+	 * @return {@link Properties} contendo as configuraï¿½ï¿½es do serviï¿½o de emails
 	 */
 	private static Properties createEmailConfigurationProperties() {
 		Properties properties = new Properties();
@@ -107,7 +107,7 @@ public class EmailService {
 	 * Cria o corpo do email com Subject e arquivo anexado
 	 * 
 	 * @param session
-	 *            Sessão do serviço de email
+	 *            Sessï¿½o do serviï¿½o de email
 	 * @return Mensagem de email
 	 */
 	private static Message createEmailBody(Session session)  {
