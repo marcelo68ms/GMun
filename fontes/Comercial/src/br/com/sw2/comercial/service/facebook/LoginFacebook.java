@@ -1,10 +1,10 @@
 package br.com.sw2.comercial.service.facebook;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+
+import br.com.sw2.comercial.service.Utils;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -18,7 +18,7 @@ public class LoginFacebook {
 	public FacebookUser obterUsuarioFacebook(String code) throws MalformedURLException,
 			IOException {
 
-		String retorno = readURL(new URL(this.getAuthURL(code)));
+		String retorno = Utils.readURL(new URL(this.getAuthURL(code)));
 
 		String accessToken = null;
 		String[] pairs = retorno.split("&");
@@ -34,23 +34,13 @@ public class LoginFacebook {
 		}
 
 		JsonParser parser = new JsonParser();
-		JsonObject obj = (JsonObject)parser.parse(readURL(new URL(
+		JsonObject obj = (JsonObject)parser.parse(Utils.readURL(new URL(
 				 "https://graph.facebook.com/me?access_token=" + accessToken)));
 		
 		FacebookUser usuarioFacebook = new FacebookUser(obj);
 		System.out.println(usuarioFacebook.toString());
 		return usuarioFacebook;
 
-	}
-
-	private String readURL(URL url) throws IOException {
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		InputStream is = url.openStream();
-		int r;
-		while ((r = is.read()) != -1) {
-			baos.write(r);
-		}
-		return new String(baos.toByteArray());
 	}
 
 	public String getLoginRedirectURL() {
