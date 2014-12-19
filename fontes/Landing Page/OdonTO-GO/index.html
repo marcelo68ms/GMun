@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Landing Page - OdonTO-GO">
+    <meta name="author" content="Marcelo Santos">
+
+    <title>OdonTO-GO</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom Google Web Font -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic" rel="stylesheet" type="text/css">
+
+    <!-- Add custom CSS here -->
+    <link href="css/custom.css" rel="stylesheet">
+    <!-- JavaScript -->
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/custom.js"></script>
+
+</head>
+
+<body>
+
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <span class="sr-only">OdonTO-GO</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#">OdonTO-GO</a>
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#" class="scroll-link" data-id="home">Principal</a></li>
+      <li><a href="#" class="scroll-link" data-id="about">Sobre Nós</a></li>
+      <li><a href="#" class="scroll-link" data-id="services">Serviços</a></li>
+      <li><a href="#" class="scroll-link" data-id="contact">Contato</a></li>
+      <li><a style="cursor:pointer;" id="loginpopup">Login / Assine</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Bem Vindo <strong>Visitante</strong> <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Minha Conta</a></li>
+          <li><a href="#">Transa&ccedil;&otilde;es</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Logout</a></li>
+        </ul>
+      </li>
+    </ul>
+    <!-- 
+    <form class="navbar-form navbar-right" role="search">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search">
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+    -->
+  </div><!-- /.navbar-collapse -->
+  </nav>
+  <!-- Code for Login / Signup Popup -->
+  <!-- Modal Log in -->
+	<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+	  <div class="modal-dialog" style="margin-top: 150px;">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h4 class="modal-title" id="myModalLabel1">Login do Sistema</h4>
+	      </div>
+	      <div class="modal-body" id="login_details">
+	        <span> Deseja criar uma conta ?</span> <br/> <br/>
+	        *<span style="font-weight:bold;">Seu Email</span> <br/>
+	        <input type="text" placeholder="example@gmail.com" name="login_email" /><br/><br/>
+	        *<span style="font-weight:bold;" >Senha</span><br />
+	        <input type="password" placeholder="Sua senha" name="login_password" /><br/>
+	      </div>
+	      <div class="modal-footer" >
+			<input style="float: left" type="button" class="btn btn-success" value="Entre" /> 
+	       <span class="fp-link"> <a href="#">Esqueceu a Senha ?</a></span>
+	       <br/><br/>
+			<span> Ainda não é Membro ?</span>
+			<span id="signup-link" style="cursor:pointer;" class="text-info">Assine !</span>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+ <!--Modal Login Ends -->
+    
+ <!-- Modal Sign-up Starts -->
+	<div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
+	  <div class="modal-dialog" style="margin-top: 100px;">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h4 class="modal-title" id="myModalLabel2">Faça parte do OdonTO-GO</h4>
+	      </div>
+	      <div class="modal-body" id="signup_details">
+	        <span >Seu Nome</span>
+	        <input type="text" placeholder="Nome Completo" name="register_name" /> <br/><br/>
+	        *<span >Email</span>
+	        <input type="text" placeholder="example@gmail.com" name="register_email" /><br/><br/>
+	        *<span >Senha</span>
+	        <input type="password" placeholder="Digite sua senha" name="register_password" /><br/><br/>
+	        *<span >Repita a Senha</span>
+	        <input type="password" placeholder="Repita sua senha" name="re_register_password" />
+	      </div>
+	      <div class="modal-footer" >
+		<input style="float: left" type="button" class="btn btn-success"  value="Conecte" /> 
+	       <span>&nbsp;&nbsp;&nbsp; Já é membro ? </span><span id="login-link" class="text-info" style="cursor:pointer;">  Efetue o Login  </span> 
+		 </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+  <!-- Modal Sign up ends! -->
+    
+  <!-- End code for Login / Signup Popup -->
+    <div class="intro-header" id="home">
+		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+					  <!-- Indicators -->
+					  <ol class="carousel-indicators">
+					    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+					    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+					    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+					  </ol>
+					
+					  <!-- Wrapper for slides -->
+					  <div class="carousel-inner">
+					    <div class="item active">
+					      <img src="img/img1.jpg" alt="Imagem 1">
+					      <div class="carousel-caption">
+					        Imagem 1
+					      </div>
+					    </div>
+					    <div class="item">
+					      <img src="img/img2.jpg" alt="Imagem 2">
+					      <div class="carousel-caption">
+					        Imagem 2
+					      </div>
+					    </div>
+					    <div class="item">
+					      <img src="img/img3.png" alt="Imagem 3">
+					      <div class="carousel-caption">
+					        Imagem 3
+					      </div>
+					    </div>
+					  </div>
+					
+					  <!-- Controls -->
+					  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+					    <span class="glyphicon glyphicon-chevron-left"></span>
+					  </a>
+					  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+					    <span class="glyphicon glyphicon-chevron-right"></span>
+					  </a>
+					</div>
+        
+        <!-- /.container -->
+
+    </div>
+    
+    <!-- /.intro-header -->
+    <div class="content-section-a" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-sm-6">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">Sobre Nós</h2>
+                    <p class="lead">A SW2 é uma empresa jovem, dinâmica e formada por profissionais com vasta experiência em Tecnologia da Informação. Desde nossa fundação investimos em projetos de inovação e hoje já somos uma instituição registrada no CNPq, Ministério da Ciência e Tecnologia (Portal de Inovação) Universidades, Centros de Pesquisa e outras agências de fomento a inovação.
+Acreditamos que não se faz INOVAÇÃO somente de maneira isolada ou individual, mas principalmente pela colaboração de diversos atores no processo criativo: nossos colaboradores, clientes e parceiros. <a href="www.sw2it.com.bt">SW2 - IT</a>.</p>
+                </div>
+                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                    <img class="img-responsive" src="img/ipad.png" alt="">
+                </div>
+            </div>
+        </div>
+        <!-- /.container -->
+    </div>
+    
+    <!-- /.content-section-a -->
+    <div class="content-section-b" id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+                    <h2 class="section-heading">Serviços</h2>
+                    <p class="lead">O que temos que ter sempre em mente é que a consulta aos diversos militantes promove a alavancagem da gestão inovadora da qual fazemos parte. A nível organizacional, a percepção das dificuldades facilita a criação de todos os recursos funcionais envolvidos. Todas estas questões, devidamente ponderadas, levantam dúvidas sobre se a adoção de políticas descentralizadoras faz parte de um processo de gerenciamento do processo de comunicação como um todo. Caros amigos, a complexidade dos estudos efetuados desafia a capacidade de equalização de alternativas às soluções ortodoxas.É importante questionar o quanto a necessidade de renovação processual maximiza as possibilidades por conta do levantamento das variáveis envolvidas.</p>
+                </div>
+                <div class="col-lg-5 col-sm-pull-6  col-sm-6">
+                    <img class="img-responsive" src="img/doge.png" alt="">
+                </div>
+            </div>
+        </div>
+        <!-- /.container -->
+    </div>
+    
+    <!-- /.content-section-b -->
+    <div class="content-section-a" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-sm-6">
+                    <h2 class="section-heading">Contato</h2>
+                    <form name="sentMessage" class="well" id="contactForm"  novalidate>
+		                 <div class="control-group">
+		                    <div class="controls">
+		                        <input type="text" class="form-control" placeholder="Nome Completo" id="name" required data-validation-required-message="Por favor, digite seu nome" />
+		                          <p class="help-block"></p>
+		                   </div>
+		                 </div>         
+		                <div class="control-group">
+		                  <div class="controls">
+		                        <input type="email" class="form-control" placeholder="Email" id="email" required data-validation-required-message="Por favor, digite seu email" />
+		                        <p class="help-block"></p>
+		                </div>
+			            </div>         		                         
+			               <div class="control-group">
+			                 <div class="controls">
+			                                 <textarea rows="10" cols="100" class="form-control" placeholder="Mensagem" id="message" required data-validation-required-message="Por favor, digite sua mensagem" minlength="5" data-validation-minlength-message="Min 5 caracteres" maxlength="999" style="resize:none"></textarea>
+			                                 <p class="help-block"></p>
+			                </div>
+			               </div>                  
+			             <div id="success"> </div> <!-- For success/fail messages -->
+			            <button type="submit" class="btn btn-primary pull-right">Enviar</button><br /><br/>
+			          </form>
+                </div>
+                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                    <!-- <img class="img-responsive" src="img/map.gif" alt="">  -->
+                </div>
+            </div>
+        </div>
+        <!-- /.container -->
+    </div>
+    
+    <!-- /.content-section-a -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="list-inline">
+                        <li><a href="#home">Principal</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li><a href="#about">Sobre nós</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li><a href="#services">Serviços</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li><a href="#contact">Contato</a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted small">Copyright &copy; SW2 - IT - 2015. All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
