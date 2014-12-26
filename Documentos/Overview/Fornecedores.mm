@@ -1,6 +1,6 @@
 <map version="1.0.1">
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
-<node CREATED="1419175551714" ID="ID_696568720" MODIFIED="1419338637489" TEXT="Fornecedores">
+<node BACKGROUND_COLOR="#cc0000" CREATED="1419175551714" ID="ID_696568720" MODIFIED="1419593561176" TEXT="Fornecedores">
 <node CREATED="1419175801766" ID="ID_1129712147" MODIFIED="1419175808676" POSITION="right" TEXT="Tipos de Produto">
 <node CREATED="1419175813406" ID="ID_1579804329" MODIFIED="1419175817197" TEXT="Produtos">
 <node CREATED="1419176488034" ID="ID_980402982" MODIFIED="1419176496750" TEXT="Descri&#xe7;ao detalhada"/>
