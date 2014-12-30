@@ -1,0 +1,77 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://apis.google.com/js/client.js"></script>
+    <script type="text/javascript">
+      var CLIENT_ID = '776101340018-ha404og3njrqev5dmv3stltnbn1q5ag0.apps.googleusercontent.com';
+      var SCOPES = [
+			'https://www.googleapis.com/auth/drive',
+			'https://www.googleapis.com/auth/drive.appdata',
+			'https://www.googleapis.com/auth/drive.apps.readonly',
+          	'https://www.googleapis.com/auth/drive.file',
+          	'https://www.googleapis.com/auth/drive.metadata.readonly',
+          	'https://www.googleapis.com/auth/drive.readonly'
+        ];
+
+      /**
+       * Called when the client library is loaded.
+       */
+      function handleClientLoad() {
+        checkAuth();
+      }
+
+      /**
+       * Check if the current user has authorized the application.
+       */
+      function checkAuth() {
+        gapi.auth.authorize(
+            {'client_id': CLIENT_ID, 'scope': SCOPES.join(' '), 'immediate': false},
+            handleAuthResult);
+      }
+
+      /**
+       * Called when authorization server replies.
+       *
+       * @param {Object} authResult Authorization result.
+       */
+      function handleAuthResult(authResult) {
+        if (authResult.access_token) {
+          // Access token has been successfully retrieved, requests can be sent to the API
+            console.log('Acesso autorizado: ' + authResult.access_token);
+            document.getElementById('shareButton').setAttribute('style', 'display: none');
+            makeApiCall();
+        } else {
+        	console.log('Acesso não autorizado: ' + authResult.error);
+        }
+      }
+
+      function makeApiCall() {
+          gapi.client.load('drive', 'v2', function() {
+
+             var request = gapi.client.drive.files.list({'maxResults': 5});
+
+             request.execute(function(resp) {    
+               if (resp.items.length == 0) {
+            	  	var msg = document.createElement('p');
+            	  	msg.appendChild(document.createTextNode("Não há documentos no Drive"));
+                	document.getElementById('content').appendChild(msg);
+               }      
+               for (i=0; i<resp.items.length; i++) {
+                       var titulo = resp.items[i].title;
+                       var fechaUpd = resp.items[i].modifiedDate;
+                       var userUpd = resp.items[i].lastModifyingUserName;
+
+                       var fileInfo = document.createElement('li');
+                       fileInfo.appendChild(document.createTextNode('Título: ' + titulo + ' - Últ. Modif: ' + fechaUpd + ' - por: ' + userUpd ));                
+                       document.getElementById('content').appendChild(fileInfo);
+               }
+             });        
+           });
+        }
+
+    </script>
+  </head>
+  <body>
+  	<a id="shareButton" href="#" onclick="handleClientLoad();"><img alt="Drive" src="./img/drive_share_button.png"></a>
+  	<div id="content"></div>
+  </body>
+</html>
