@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<!-- The client library requires jQuery  -->
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script src="https://api.trello.com/1/client.js?key=252102bf7923cf5dcb2d0631fdb82064"></script>
+
+<script>
+$(document).ready(function() {
+var onAuthorize = function() {
+    updateLoggedIn();
+    $("#output").empty();
+    
+    Trello.members.get("me", function(member){
+        $("#fullName").text(member.fullName);
+    
+        var $cards = $("<div>")
+            .text("Carregando cartões...")
+            .appendTo("#output");
+
+        // Output a list of all of the cards that the member is assigned to
+        Trello.get("members/me/cards", function(cards) {
+            $cards.empty();
+            $.each(cards, function(ix, card) {
+                $("<a>")
+                .attr({href: card.url, target: "trello"})
+                .addClass("card")
+                .text(card.name)
+                .appendTo($cards);
+            });  
+        });
+    });
+
+};
+
+var updateLoggedIn = function() {
+    var isLoggedIn = Trello.authorized();
+    $("#loggedout").toggle(!isLoggedIn);
+    $("#loggedin").toggle(isLoggedIn);        
+};
+    
+var logout = function() {
+    Trello.deauthorize();
+    updateLoggedIn();
+};
+                          
+Trello.authorize({
+    interactive:false,
+    success: onAuthorize
+});
+
+$("#connectLink").click(function(){
+    Trello.authorize({
+        type: "popup",
+        name: "OdonTO-DO",
+        success: onAuthorize
+    })
+});
+    
+$("#disconnect").click(logout);
+
+});
+</script>
+
+<style style="text/css">
+body {
+    font-family: arial;
+    font-size: 12px;
+}
+
+#loggedout {
+    text-align: left;
+    font-size: 20px;
+    padding-top: 30px;
+}
+#loggedin { 
+    display: none; 
+}
+
+#header {
+    padding: 4px;
+    border-bottom: 1px solid #000;
+    background: #eee;
+}
+
+#output {
+    padding: 4px;
+}
+
+.card { 
+    display: block; 
+    padding: 2px;
+}
+</style>
+
+<meta charset="ISO-8859-1">
+<title>Trello Login</title>
+</head>
+<body>
+
+<div id="loggedout">
+    <a id="connectLink" href="#">Conectar com Trello</a>
+</div>
+
+<div id="loggedin">
+    <div id="header">
+        Conectado como <span id="fullName"></span> 
+        <a id="disconnect" href="#">Log Out</a>
+    </div>
+    
+    <div id="output"></div>
+</div>   
+
+</body>
+</html>
+
