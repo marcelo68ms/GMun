@@ -54,7 +54,7 @@ public class ExecutePaymentServlet extends HttpServlet {
 		post.addHeader(Utils.AUTHORIZATION, Utils.TOKEN_TYPE + SimplePaymentService.getToken());
 		post.addHeader(Utils.CONTENT_TYPE, Utils.APPLICATION_JSON);
 
-		StringBuffer urlParameters = new StringBuffer("{\"").append(Utils.PAYER_ID).append("\":\"").append(payerId).append("\"}");
+		StringBuffer urlParameters = new StringBuffer("{\"payer_id\":\"").append(payerId).append("\"}");
 		
 		try {
 			post.setEntity(new StringEntity(urlParameters.toString()));
