@@ -29,8 +29,8 @@ public class ExecutePaymentServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String payerId = (String) request.getParameter("PayerID");
-		String paymentId = (String) request.getParameter("paymentId");
+		String payerId = (String) request.getParameter(Utils.PAYER_ID);
+		String paymentId = (String) request.getParameter(Utils.PAYMENT_ID);
 		String result = postRequest(paymentId, payerId);
 		
 		JsonParser parser = new JsonParser();
@@ -54,7 +54,7 @@ public class ExecutePaymentServlet extends HttpServlet {
 		post.addHeader(Utils.AUTHORIZATION, Utils.TOKEN_TYPE + SimplePaymentService.getToken());
 		post.addHeader(Utils.CONTENT_TYPE, Utils.APPLICATION_JSON);
 
-		StringBuffer urlParameters = new StringBuffer("{\"payer_id\":\"").append(payerId).append("\"}");
+		StringBuffer urlParameters = new StringBuffer("{\"").append(Utils.PAYER_ID).append("\":\"").append(payerId).append("\"}");
 		
 		try {
 			post.setEntity(new StringEntity(urlParameters.toString()));

@@ -16,7 +16,7 @@ import com.google.gson.JsonParser;
 
 public class SimplePaymentService {
 
-	private static final String RETURN_URL = "\"http://localhost:8080/Comercial/executePayment\"";
+	private static final String RETURN_URL = "http://localhost:8080/Comercial/executePayment";
 	private static String access_token;
 
 	public String getPaymentApprovaltURL() {
@@ -60,8 +60,8 @@ public class SimplePaymentService {
 		post.addHeader(Utils.CONTENT_TYPE, Utils.APPLICATION_JSON);
 		
 		StringBuffer urlParameters = new StringBuffer("{\"intent\":\"sale\",  \"redirect_urls\":");
-		urlParameters.append("{\"return_url\":").append(RETURN_URL).append(",");
-		urlParameters.append("\"cancel_url\":\"http://localhost:8080/Comercial/cancelPayment.html\"},");
+		urlParameters.append("{\"return_url\":\"").append(RETURN_URL).append("\",");
+		urlParameters.append("\"cancel_url\":\"").append(Utils.CANCEL_URL).append("\"},");
 		urlParameters.append("\"payer\":{\"payment_method\":\"paypal\"},");
 		urlParameters.append("\"transactions\":[{\"amount\":{");
 		urlParameters.append("\"total\":\"67.43\",\"currency\":\"BRL\"}}]}");

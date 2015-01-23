@@ -25,6 +25,11 @@ public class Utils {
 	public static final String TOKEN_TYPE = "Bearer ";
 	public static final String BASIC = "Basic ";
 	public static final String GRANT_TYPE = "grant_type";
+	public static final String CANCEL_URL = "http://localhost:8080/Comercial";
+	public static final String PROPERTIES_PATH = "d:\\SW2\\OdonTO-DO\\fontes\\Comercial\\src\\main\\resources\\sdk_config.properties";
+	public static final String PAYMENT_ID = "paymentId";
+	public static final String PAYER_ID = "PayerID";
+
 
 	
 	public static String generateBase64encoded() {
