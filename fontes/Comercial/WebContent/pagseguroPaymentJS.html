@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>PagSeguro Pagamento JS</title>
+</head>
+<body>
+
+</body>
+<form action="https://pagseguro.uol.com.br/checkout/v2/cart.html?action=add" method="post" 
+onsubmit="PagSeguroLightbox(this); return false;">
+
+	<input type="hidden" name="itemCode" value="F31B804FB8B813755448CF86345DBDCE" />
+	<input type="image" src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/pagamentos/120x53-pagar.gif" 
+	name="submit" alt="Pague com PagSeguro - é rápido, grátis e seguro!" />
+</form>
+<script type="text/javascript" src="https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script>
+</html>
+
