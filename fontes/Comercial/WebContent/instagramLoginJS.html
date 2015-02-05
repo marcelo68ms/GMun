@@ -1,0 +1,26 @@
+<html>
+<head>
+</head>
+<body>
+	<div id="login">
+		<a
+			href="https://instagram.com/oauth/authorize/?client_id=b88c7491e82c454b98610567292c7f96&redirect_uri=http://localhost:8080/Comercial/instagramLoginJS.html&response_type=token">
+			<img src="./img/instagram-button.png" />
+		</a>
+	</div>
+	<div id="loginOk" style="display: none">
+		Você efetuou login com sucesso no Instagram!
+	</div>
+	
+</body>
+<script type="text/javascript">
+if (location.hash.length != 0) {
+	var hashfragment = location.hash;
+	var keyValPair = hashfragment.split('=');
+	var token = keyValPair[1];
+	document.getElementById('login').setAttribute('style', 'display: none');
+	document.getElementById('loginOk').setAttribute('style', 'display: inline');
+};
+
+</script>
+</html>
