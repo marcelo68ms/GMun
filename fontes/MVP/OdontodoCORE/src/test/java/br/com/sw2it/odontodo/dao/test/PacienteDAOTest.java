@@ -18,11 +18,12 @@ import static org.junit.Assert.*;
  */
 public class PacienteDAOTest {
     
-    public PacienteDAOTest() {
+    public PacienteDAOTest()  {
     }
     
     @BeforeClass
     public static void setUpClass() {
+        
     }
     
     @AfterClass
@@ -42,4 +43,8 @@ public class PacienteDAOTest {
     //
     // @Test
     // public void hello() {}
+    @Test
+    public void incluiPaciente() {
+        
+    }
 }
