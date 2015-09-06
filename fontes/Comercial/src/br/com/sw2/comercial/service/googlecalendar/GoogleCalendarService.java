@@ -156,7 +156,7 @@ public class GoogleCalendarService {
 	}
 	
 	/**
-	 * Altera o proprietário da agenda, permitindo que o usuário do gmail 
+	 * Altera o proprietï¿½rio da agenda, permitindo que o usuï¿½rio do gmail 
 	 * tenha acesso a agenda do Service Account
 	 * @param client
 	 */
