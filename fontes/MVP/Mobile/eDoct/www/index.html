@@ -7,7 +7,7 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="ionic/css/ionic.min.css">
-        <title>Blank App Designer Cordova Web App Project Template</title>
+        <title>eDoct</title>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 
         <!--
@@ -65,6 +65,7 @@
         <script type="application/javascript" src="marginal/marginal-position.js"></script>
         <script type="application/javascript" src="ionic/js/ionic.bundle.js"></script>
         <script type="application/javascript" src="js/index_init_services.js"></script>
+        <script type="application/javascript" src="js/index_uib_w_6_popover.js"></script>
     </head>
 
     <body ng-app="myApp">
@@ -74,12 +75,26 @@
         <!-- <script src="http://debug-software.intel.com/target/target-script-min.js#insertabiglongfunkynumberfromthexdkstesttab"></script> -->
         <div class="upage" id="mainpage">
             <div class="upage-outer fixed-header-footer">
-                <div class="upage-content ac0 content-area vertical-col left"></div>
+                <div class="upage-content ac0 content-area vertical-col left" id="page_9_15">
+
+                    <div class="button-bar widget uib_w_6 d-margins" data-uib="ionic/button_bar" data-ver="0">
+                        <button class="button widget uib_w_7" data-uib="ionic/button" data-ver="0" id="btnAgenda">Agenda</button>
+                        <button class="button widget uib_w_8" data-uib="ionic/button" data-ver="0" id="btnPaciente">Pacientes</button>
+                        <button class="button widget uib_w_9" data-uib="ionic/button" data-ver="0" id="btnGestao">Gestão</button>
+                    </div>
+                    <div class="widget uib_w_10 scale-image d-margins" data-uib="media/img" data-ver="0">
+                        <figure class="figure-align">
+                            <img src="images/Calendar.jpg">
+                            <figcaption data-position="bottom"></figcaption>
+                        </figure>
+                    </div>
+                </div>
                 <ion-header-bar class="bar inner-element uib_w_1 bar-positive bar-header" data-uib="ionic/header" data-ver="0">
                     <div class="buttons widget-container content-area horiz-area wrapping-col"></div>
                     <h1 class="title">eDoct</h1>
                     <div class="buttons widget-container content-area horiz-area wrapping-col"></div>
                 </ion-header-bar>
+                <div id="Agenda" class="upage-content vertical-col left hidden"></div>
             </div>
         </div>
     </body>

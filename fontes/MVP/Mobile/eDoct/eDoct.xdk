@@ -6,7 +6,7 @@
       "projectTypeName": "com.intel.xdk.projecttype.jsapp",
       "src": "jsapp/template-blank-cordova-ad-project/sample.zip",
       "projectGuid": "6da02775-41ac-4046-897d-caa4050659fb",
-      "lastModifiedDate": 1446752071172,
+      "lastModifiedDate": 1446760459090,
       "creationDate": 1446752068817
     },
     "XDK-app-designer": "true",
@@ -81,7 +81,7 @@
           "android-targetSdkVersion": "19",
           "android-installLocation": "auto"
         },
-        "isActive_": true,
+        "isActive_": false,
         "appName_": "eDoct",
         "appID_": "xdk.intel.blank.ad.template.crosswalk",
         "appAccess_": {
@@ -97,7 +97,7 @@
         "addlPermissions_": "",
         "excludedLibraries_": "",
         "cordovaCLIVersion_": "5.1.1",
-        "crosswalkVersion_": "14",
+        "crosswalkVersion_": "15",
         "appVersion_": "0.0.1",
         "appAuthor_": "Intel XDK",
         "appDescription_": "Template to develop a Cordova mobile web app using the App Designer UI editor.",
@@ -114,7 +114,7 @@
         },
         "isActive_": true,
         "appName_": "eDoct",
-        "appID_": "xdk.intel.blank.ad.template",
+        "appID_": "br.com.sw2.edoct",
         "appAccess_": {
           "mode": "legacy",
           "network": [
@@ -130,8 +130,8 @@
         "cordovaCLIVersion_": "5.1.1",
         "crosswalkVersion_": "14",
         "appVersion_": "0.0.1",
-        "appAuthor_": "Intel XDK",
-        "appDescription_": "Template to develop a Cordova mobile web app using the App Designer UI editor.",
+        "appAuthor_": "SW2 - IT",
+        "appDescription_": "Aplicativo para auxilio aos Dentistas",
         "appVersionCode_": "1"
       },
       "iOS": {
@@ -142,7 +142,7 @@
           "ios-target": "6",
           "ios-configuration": "adhoc"
         },
-        "isActive_": true,
+        "isActive_": false,
         "appName_": "eDoct",
         "appID_": "xdk.intel.blank.ad.template",
         "appAccess_": {
@@ -172,7 +172,7 @@
           "windows-publisher-display-name": "",
           "windows-publisher-id": ""
         },
-        "isActive_": true,
+        "isActive_": false,
         "appName_": "eDoct",
         "appID_": "xdk.intel.blank.ad.template",
         "appAccess_": {
